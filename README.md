@@ -79,7 +79,7 @@ make clean
 
 ## Relevant projects
 
-- [kinsis-bulk-loader](https://github.com/yokawasa/kinesis-get-shardid): A Golang tool that sends bulk messages in parallel to Amazon SQS
+- [kinsis-bulk-loader](https://github.com/yokawasa/kinesis-bulk-loader): A Golang tool that sends bulk messages in parallel to Amazon SQS
 - [kinesis-consumer](https://github.com/yokawasa/kinesis-consumer): The Kinesis Consumer side can be tested with [kinesis-consumer](https://github.com/yokawasa/kinesis-consumer)
 
 ## Contributing
