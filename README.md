@@ -1,6 +1,6 @@
 # kinesis-get-shardid
 
-
+[![Upload Release Asset](https://github.com/yokawasa/kinesis-get-shardid/actions/workflows/release.yml/badge.svg)](https://github.com/yokawasa/kinesis-get-shardid/actions/workflows/release.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/yokawasa/kinesis-get-shardid)](https://goreportcard.com/report/github.com/yokawasa/kinesis-get-shardid) [![GoDoc](https://godoc.org/github.com/yokawasa/kinesis-get-shardid?status.svg)](https://godoc.org/github.com/yokawasa/kinesis-get-shardid)
 
 A Golang tool that get a shard ID to be assigned in AWS Kinesis Data Stream from a partition key.
 
