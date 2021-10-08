@@ -25,7 +25,7 @@ Options:
 -stream string       (Required) Kinesis stream name
 -region string       Region for Kinesis stream
                      By default "ap-northeast-1"
--key string            (Required) Partition key
+-key string          (Required) Partition key
 -version             Prints out build version information
 -verbose             Verbose option
 -h                   help message
