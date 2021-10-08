@@ -43,7 +43,7 @@ stream_name=test-kds01
 region=ap-northeast-1
 partitionkey=mykey001
 
-kinesis-get-shardid -stream ${stream_name} -region ${region} -k ${partitionkey}
+kinesis-get-shardid -stream ${stream_name} -region ${region} -key ${partitionkey}
 ```
 
 Sample output would be like this:
@@ -68,7 +68,7 @@ GOOS=windows GOARCH=amd64 GO111MODULE=on go build -ldflags "-X main.buildVersion
 Suppose you are using macOS, run the `kinesis-get-shardid_darwin` (while `kinesis-get-shardid_linux` if you are using Linux, or `kinesis-get-shardid_windows` if using Windows) like below
 
 ```bash
-./dist/kinesis-get-shardid_darwin_amd64 -stream test-kds01 -k hoge
+./dist/kinesis-get-shardid_darwin_amd64 -stream test-kds01 -key hoge
 ```
 
 Finally clean built commands
