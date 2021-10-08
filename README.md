@@ -53,7 +53,7 @@ PartionKey mykey001 -> ShardId shardId-000000000004
 ```
 
 
-## Build and Run (For Developer)
+## Build and Run
 
 To build, simply run `make` like below
 ```
