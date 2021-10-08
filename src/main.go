@@ -77,7 +77,7 @@ func main() {
 	}
 
 	if streamName == "" || partitionKey == "" {
-		fmt.Println("[ERROR] Invalid Command Options! Minimum required options are \"-stream\", \"-k\" and \"-m\"")
+		fmt.Println("[ERROR] Invalid Command Options! Minimum required options are \"-stream\" and \"-key\"")
 		usage()
 	}
 
@@ -91,8 +91,10 @@ func main() {
 	}
 
 	hashKey := getPartitionHashKey(partitionKey)
-	fmt.Printf("partion key hash %d\n", hashKey)
-	//fmt.Printf("listShardsResp %v\n", listShardsResp)
+	if verbose {
+		fmt.Printf("partion key hash %d\n", hashKey)
+		fmt.Printf("listShardsResp %v\n", listShardsResp)
+	}
 	for _, shard := range listShardsResp.Shards {
 		// Pick only the shard have a parent, that is child shard formed by either merge or split
 		if shard.ParentShardId != nil {
