@@ -31,6 +31,23 @@ Options:
 -h                   help message
 `
 
+type flags struct {
+	m map[string]bool
+}
+
+func (f flags) Check(key string) bool {
+	_, ok := f.m[key]
+	if ok {
+		return true
+	} else {
+		return false
+	}
+}
+
+func (f flags) On(key string) {
+	f.m[key] = true
+}
+
 func toBigInt(s string) *big.Int {
 	n := big.NewInt(0)
 	n.SetString(s, 10)
@@ -95,9 +112,21 @@ func main() {
 		fmt.Printf("partion key hash %d\n", hashKey)
 		fmt.Printf("listShardsResp %v\n", listShardsResp)
 	}
+
+	excludingKeys := flags{map[string]bool{}}
 	for _, shard := range listShardsResp.Shards {
-		// Pick only the shard have a parent, that is child shard formed by either merge or split
-		if shard.ParentShardId != nil {
+		if shard.ParentShardId != nil && !excludingKeys.Check(*shard.ParentShardId) {
+			excludingKeys.On(*shard.ParentShardId)
+		}
+		if shard.AdjacentParentShardId != nil && !excludingKeys.Check(*shard.AdjacentParentShardId) {
+			excludingKeys.On(*shard.AdjacentParentShardId)
+		}
+	}
+	if verbose {
+		fmt.Printf("excludingKeys %v\n", excludingKeys)
+	}
+	for _, shard := range listShardsResp.Shards {
+		if !excludingKeys.Check(*shard.ShardId) {
 			if includedInShardHashKeyRange(hashKey, shard) {
 				fmt.Printf("PartionKey %s -> ShardId %s\n", partitionKey, *shard.ShardId)
 				break
